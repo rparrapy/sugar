@@ -1,5 +1,6 @@
 sugardir = $(pkgdatadir)/extensions/deviceicon
 
+
 sugar_PYTHON = 		\
 	__init__.py	\
 	audio.py	\
@@ -8,4 +9,5 @@ sugar_PYTHON = 		\
 	network.py	\
 	speech.py	\
 	touchpad.py	\
-	volume.py
+	volume.py \
+	listen.py

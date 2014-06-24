@@ -1,0 +1,5 @@
+#JSGF V1.0;
+
+grammar sugarhome;
+
+public <sugarhome> = start ( maze | write | browse | chat | speak | help | memorize | ruler | read | turtle  );
