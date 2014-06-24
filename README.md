@@ -10,9 +10,13 @@ countries.
 Originally developed for the One Laptop per Child XO-1 netbook, Sugar
 runs on most computers. Sugar is free/libre and open-source software.
 
-Hacking
--------
+**This is a fork of the Sugar Desktop used for testing purposes as a part of the Sugar Listens GSoC 2014 project.**
 
-For hacking you can use the sugar-build tool. Sugar is made of several modules and it often depends on libraries which has not yet been packaged in linux distributions. To make it easier for developers to build from sources, we developed a set of scripts that automates builds and other common development tasks. 
+Setup and Run
+==============
 
-For details see: http://developer.sugarlabs.org/dev-environment.md.html
+1. Make **sure** Sugar Listens is already running, otherwise things will go boom! (I warned you).
+If you haven't installed Sugar Listens yet, check [this](https://github.com/rparrapy/sugarlistens/blob/master/README.md) out. 
+2. If you are using the sugar-build tool for running Sugar, copy the *extensions/deviceicon/speech* folder and its content to *build/out/install/share/sugar/extensions/deviceicon/speech*.
+3. Run Sugar as you usually would.
+4. Say "Start Maze" and let the magic happen (Disclaimer: Maze Activity should be installed for this to work).
