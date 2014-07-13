@@ -55,7 +55,6 @@ class SpeechRecognizerView(TrayIcon):
         self._path = os.path.dirname(os.path.abspath(__file__))
         self._init_recognizer()
         self._active = True
-        #self._recognizer.listen(self._test_result)
         self._home_model = shell.get_model()
         self._home_model.connect('active-activity-changed',
                                  self.__active_activity_changed)
