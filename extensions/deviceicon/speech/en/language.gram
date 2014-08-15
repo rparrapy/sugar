@@ -2,4 +2,8 @@
 
 grammar sugarhome;
 
-public <sugarhome> = start ( maze | write | browse | chat | speak | help | memorize | ruler | read | turtle  );
+public <sugarhome> = <start> | <resume> | (wildcard)+;
+
+<activity> = ( maze | write | browse | chat | speak | help | memorize | ruler | read | turtle | last activity );
+<start> = start <activity>;
+<resume> = resume <activity> [from (yesterday | monday | tuesday | wednesday | thursday | friday | saturday | sunday)];

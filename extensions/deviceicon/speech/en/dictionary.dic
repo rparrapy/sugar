@@ -1,3 +1,78 @@
 start   S T AA R T
 maze M EY Z
 write   R AY T
+browse	B R AW S
+chat	CH AE T
+speak	S P IY K
+help	HH EH L P
+memorize	M EH M ER AY Z
+ruler	R UW L ER
+read	R EH D
+read(2)	R IY D
+turtle	T ER T AH L
+resume	R IH Z UW M
+resume(2)	R IY Z UW M
+resume(3)	R EH Z AH M EY
+from	F R AH M
+from(2)	F ER M
+yesterday	Y EH S T ER D EY
+yesterday(2)	Y EH S T ER D IY
+monday	M AH N D IY
+monday(2)	M AH N D EY
+tuesday	T UW Z D IY
+tuesday(2)	T UW Z D EY
+tuesday(3)	T Y UW Z D EY
+wednesday	W EH N Z D IY
+wednesday(2)	W EH N Z D EY
+thursday	TH ER Z D EY
+thursday(2)	TH ER Z D IY
+friday	F R AY D IY
+friday(2)	F R AY D EY
+saturday	S AE T ER D IY
+saturday(2)	S AE T IH D EY
+sunday	S AH N D EY
+sunday(2)	S AH N D IY
+last	L AE S T
+last(2)	L AO S T
+last(3)	L AE S
+activity	AE K T IH V AH T IY
+activity(2)	AE K T IH V IH T IY
+wildcard AA
+wildcard(2) AE
+wildcard(3) AH
+wildcard(4) AO
+wildcard(5) AW
+wildcard(6) AY
+wildcard(7) B
+wildcard(8) CH
+wildcard(9) D
+wildcard(10) DH
+wildcard(11) EH
+wildcard(12) ER
+wildcard(13) EY
+wildcard(14) F
+wildcard(15) G
+wildcard(16) HH
+wildcard(17) IH
+wildcard(18) IY
+wildcard(19) JH
+wildcard(20) K
+wildcard(21) L
+wildcard(22) M
+wildcard(23) N
+wildcard(24) NG
+wildcard(25) OW
+wildcard(26) OY
+wildcard(27) P
+wildcard(28) R
+wildcard(29) S
+wildcard(30) SH
+wildcard(31) T
+wildcard(32) TH
+wildcard(33) UH
+wildcard(34) UW
+wildcard(35) V
+wildcard(36) W
+wildcard(37) Y
+wildcard(38) Z
+wildcard(39) ZH
