@@ -4,6 +4,7 @@ grammar sugarhome;
 
 public <sugarhome> = <start> | <resume> | (wildcard)+;
 
-<activity> = ( maze | write | browse | chat | speak | help | memorize | ruler | read | turtle | last activity );
+<activity> = ( maze | write | browse | chat | speak | help | memorize | ruler | read | turtle | calculate | image | jukebox | log | terminal);
 <start> = start <activity>;
-<resume> = resume <activity> [from (yesterday | monday | tuesday | wednesday | thursday | friday | saturday | sunday)];
+<resume> = resume (<activity> | last activity) <day>;
+<day> = from (journal | yesterday | monday | tuesday | wednesday | thursday | friday | saturday | sunday);

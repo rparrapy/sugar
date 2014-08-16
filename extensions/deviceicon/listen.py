@@ -49,11 +49,16 @@ _NAME_TO_ID = {
     _('write'): 'org.laptop.AbiWordActivity',
     _('browse'): 'org.laptop.WebActivity',
     _('chat'): 'org.laptop.Chat',
-    _('speak'): 'org.laptop.AbiWordActivity',
-    _('memorize'): 'org.laptop.AbiWordActivity',
-    _('ruler'): 'org.laptop.AbiWordActivity',
+    _('speak'): 'vu.lux.olpc.Speak',
+    _('memorize'): 'org.laptop.Memorize',
+    _('ruler'): 'com.laptop.Ruler',
     _('read'): 'org.laptop.sugar.ReadActivity',
-    _('turtle'): 'org.laptop.TurtleArtActivity'
+    _('turtle'): 'org.laptop.TurtleArtActivity',
+    _('calculate'): 'org.laptop.Calculate',
+    _('image'): 'org.laptop.ImageViewerActivity',
+    _('log'): 'org.laptop.Log',
+    _('jukebox'): 'org.laptop.sugar.Jukebox' ,
+    _('terminal'): 'org.laptop.Terminal'
 }
 
 _WEEK_DAYS = [_('monday'), _('tuesday'), _('wednesday'), _('thursday'),
@@ -82,10 +87,11 @@ class SpeechRecognizerView(TrayIcon):
     def __connection_attemp_cb(self, view):
         try:
             logging.warning('Starting listener')
+            logging.warning(view._path)
             view._recognizer = helper.RecognitionHelper(view._path)
             view._recognizer.listen_to('start (?P<name>\w+)', view._start_activity)
-            view._recognizer.listen_to('resume (?P<name>\w+$)', view._resume_activity)
             view._recognizer.listen_to('resume (?P<name>\w+) from (?P<day>\w+)', view._resume_activity)
+            view._recognizer.listen_to('resume last activity from (?P<day>\w+)', view._resume_last_activity)
 
             if not view.is_muted():
                 view._recognizer.start_listening()
@@ -99,8 +105,11 @@ class SpeechRecognizerView(TrayIcon):
         registry = bundleregistry.get_registry()
         activity_info = registry.get_bundle(_NAME_TO_ID.get(_(name)))
         misc.launch(activity_info)
+
+    def _resume_last_activity(self, text, pattern, day):
+        self._resume_activity(text, pattern, None, day)
    
-    def _resume_activity(self, text, pattern, name, day=None):
+    def _resume_activity(self, text, pattern, name, day):
         logging.warning('Voice command: %s' % text)
         logging.warning('Activity: %s' % name)
         logging.warning('Day: %s' % day)
@@ -111,7 +120,7 @@ class SpeechRecognizerView(TrayIcon):
         timestamp = None
         t = date.today()
 
-        if day:
+        if not _(day) == _('journal'):
             if _(day) == _('yesterday'):
                 delta = -1
             else:
@@ -123,14 +132,12 @@ class SpeechRecognizerView(TrayIcon):
             end = time.mktime(n.timetuple())
             timestamp = {'start': start, 'end':end}
 
-        logging.warning('build query')
         query = {}
-        if not _(name) == _('last activity'):
+        if name:
             query['activity'] = _NAME_TO_ID.get(_(name))
         if timestamp:
             query['timestamp'] = timestamp
 
-        #logging.warning(timestamp)
         datastore.find(query, sorting=['+timestamp'],
                    limit=1,
                    properties=properties,
@@ -159,7 +166,6 @@ class SpeechRecognizerView(TrayIcon):
 
         if activity_info and activity_info.get_bundle_id():
             self._recognizer.stop_listening('start (?P<name>\w+)')
-            self._recognizer.stop_listening('resume (?P<name>\w+$)')
             self._recognizer.stop_listening('resume (?P<name>\w+) from (?P<day>\w+)')
             self._active = False
             logging.warning('Stopping listener')
